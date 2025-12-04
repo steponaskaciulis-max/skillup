@@ -23,7 +23,7 @@ export default function SATPage() {
     { title: "Writing – Concision", description: "Eliminating redundancy." },
   ];
 
-  // 🔥 When clicking a tile, go to practice mode with topic+difficulty
+  // When clicking a tile, go to practice mode with topic+difficulty
   const startPractice = (topicName) => {
     router.push({
       pathname: "/practice",
@@ -63,11 +63,6 @@ export default function SATPage() {
             onClick={() => startPractice(t.title)}
           />
         ))}
-      </div>
-    </div>
-  );
-}
-
       </div>
     </div>
   );
