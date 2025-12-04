@@ -4,10 +4,9 @@ export default function Layout({ children }) {
       <header className="site-header">
         <div className="header-inner">
           <div className="brand">
-            {/* If you upload a real logo later, replace this text with an <img /> */}
             <span className="brand-mark">SkillUp</span>
             <span className="brand-tagline">
-              AP, SAT & High School Mastery
+              AP, SAT &amp; High School Mastery
             </span>
           </div>
           <nav className="main-nav">
@@ -25,7 +24,8 @@ export default function Layout({ children }) {
       <footer className="site-footer">
         <p>© {new Date().getFullYear()} SkillUp. All rights reserved.</p>
         <p className="footer-meta">
-          TikTok: <span>coming soon</span> · Membership: <strong>$20/month</strong>
+          TikTok: <span>coming soon</span> · Membership:{" "}
+          <strong>$20/month</strong>
         </p>
       </footer>
     </div>
