@@ -1,7 +1,9 @@
 // SkillUp/data/satQuestions.js
 
+// difficulty scale: 1 = easiest, 5 = hardest
+
 export const satQuestions = [
-  // ========== MATH: ALGEBRA ==========
+  // ===== MATH: ALGEBRA =====
   {
     id: "M1",
     section: "Math",
@@ -24,10 +26,10 @@ export const satQuestions = [
     choices: ["7x - 8", "x - 8", "7x + 8", "4x - 2"],
     answer: "7x - 8",
     explanation:
-      "Distribute 4 to get 4x - 8, then add 3x: 4x - 8 + 3x = 7x - 8.",
+      "Distribute 4: 4x - 8. Then add 3x to get 7x - 8.",
   },
 
-  // ========== MATH: FUNCTIONS ==========
+  // ===== MATH: FUNCTIONS =====
   {
     id: "M3",
     section: "Math",
@@ -37,7 +39,7 @@ export const satQuestions = [
     question: "If f(x) = 2x + 1, what is f(4)?",
     choices: ["5", "7", "8", "9"],
     answer: "9",
-    explanation: "f(4) = 2(4) + 1 = 8 + 1 = 9.",
+    explanation: "f(4) = 2(4) + 1 = 9.",
   },
   {
     id: "M4",
@@ -55,10 +57,10 @@ export const satQuestions = [
     ],
     answer: "y = f(x) + 3",
     explanation:
-      "Adding a constant outside f(x) translates the graph vertically. +3 moves it up.",
+      "Adding a constant outside f(x) translates the graph vertically; +3 moves it up.",
   },
 
-  // ========== MATH: WORD PROBLEMS ==========
+  // ===== MATH: WORD PROBLEMS =====
   {
     id: "M5",
     section: "Math",
@@ -70,56 +72,55 @@ export const satQuestions = [
     choices: ["20m + 15", "15m + 20", "35m", "20m - 15"],
     answer: "15m + 20",
     explanation:
-      "There is a fixed fee of 20 plus 15 times the number of months: 15m + 20.",
+      "You pay 20 once and 15 per month: total cost = 15m + 20.",
   },
 
-  // ========== READING: MAIN IDEA ==========
+  // ===== READING: MAIN IDEA =====
   {
     id: "R1",
     section: "Reading",
-    topic: "Reading: Main Idea",
+    topic: "Reading – Main Idea",
     difficulty: 2,
     type: "multiple-choice",
-    passageId: "passage_1",
     question:
-      "Which choice best states the main idea of the passage?",
+      "A passage describes how asking simple questions led scientists to unexpected discoveries. Which choice best states the main idea?",
     choices: [
-      "The author describes a memorable childhood trip.",
-      "The author argues that curiosity drives scientific discovery.",
-      "The author explains why technology is harmful to society.",
-      "The author narrates a conflict between friends.",
+      "Simple questions rarely lead to useful discoveries.",
+      "Curiosity and simple questions often drive major scientific breakthroughs.",
+      "Only professional scientists are capable of important discoveries.",
+      "Scientific discovery depends entirely on advanced technology.",
     ],
-    answer: "The author argues that curiosity drives scientific discovery.",
+    answer:
+      "Curiosity and simple questions often drive major scientific breakthroughs.",
     explanation:
-      "Throughout the passage the author returns to how curiosity leads to new questions and breakthroughs, making that the central idea.",
+      "The focus is on curiosity and basic questions leading to important discoveries.",
   },
 
-  // ========== READING: INFERENCE ==========
+  // ===== READING: INFERENCE =====
   {
     id: "R2",
     section: "Reading",
-    topic: "Reading: Inference",
+    topic: "Reading – Inference",
     difficulty: 3,
     type: "multiple-choice",
-    passageId: "passage_1",
     question:
-      "It can reasonably be inferred from the passage that the author views mistakes as:",
+      "The author notes that 'every failed experiment closes one wrong door.' It can reasonably be inferred that the author views failure as:",
     choices: [
-      "Unavoidable and useless.",
-      "Embarrassing and harmful.",
-      "Necessary steps in learning.",
-      "Evidence of a lack of talent.",
+      "Proof that the researcher is unqualified.",
+      "A sign that further research is pointless.",
+      "A necessary part of narrowing down correct ideas.",
+      "Something that should be avoided at all costs.",
     ],
-    answer: "Necessary steps in learning.",
+    answer: "A necessary part of narrowing down correct ideas.",
     explanation:
-      "The author frames mistakes as chances to learn and revise ideas, suggesting they are necessary and productive.",
+      "Closing a 'wrong door' suggests progress toward the right answer, not pointless failure.",
   },
 
-  // ========== WRITING: PUNCTUATION ==========
+  // ===== WRITING: PUNCTUATION =====
   {
     id: "W1",
     section: "Writing",
-    topic: "Writing: Punctuation",
+    topic: "Writing – Punctuation",
     difficulty: 2,
     type: "multiple-choice",
     question:
@@ -132,14 +133,14 @@ export const satQuestions = [
     ],
     answer: "shops; however, others",
     explanation:
-      '"However" is a conjunctive adverb joining two independent clauses, so it should follow a semicolon and be followed by a comma.',
+      "Two independent clauses are joined by 'however,' a conjunctive adverb; it should follow a semicolon and be followed by a comma.",
   },
 
-  // ========== WRITING: CONCISION ==========
+  // ===== WRITING: CONCISION =====
   {
     id: "W2",
     section: "Writing",
-    topic: "Writing: Concision",
+    topic: "Writing – Concision",
     difficulty: 2,
     type: "multiple-choice",
     question:
@@ -153,6 +154,6 @@ export const satQuestions = [
     answer:
       "The experiment was unsuccessful because the equipment was not calibrated.",
     explanation:
-      "This option is clear and avoids wordiness like 'the reason why' and 'due to the fact that.'",
+      "This option is direct and avoids wordy phrases like 'the reason why' and 'due to the fact that.'",
   },
 ];
