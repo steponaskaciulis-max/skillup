@@ -1,0 +1,1 @@
+export default function SAT(){return <div>SAT Page Placeholder</div>}
