@@ -74,7 +74,7 @@ export default function Home() {
             tips, and stay accountable.
           </p>
           <p>
-            Contact the team (you):{" "}
+            Contact the team :{" "}
             <a href="mailto:steponas.kaciulis@gmail.com">
               steponas.kaciulis@gmail.com
             </a>
