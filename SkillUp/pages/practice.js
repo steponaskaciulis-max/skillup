@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { satQuestions } from "../data/satQuestions";
 
 export default function PracticePage() {
@@ -10,6 +10,13 @@ export default function PracticePage() {
   const [selected, setSelected] = useState(null);
   const [showExplanation, setShowExplanation] = useState(false);
 
+  // simple session stats
+  const [total, setTotal] = useState(0);
+  const [correct, setCorrect] = useState(0);
+  const [streak, setStreak] = useState(0);
+  const [xp, setXp] = useState(0);
+
+  // map difficulty labels to allowed numeric difficulties
   const diffMap = {
     Beginner: [1, 2],
     Intermediate: [2, 3],
@@ -17,6 +24,7 @@ export default function PracticePage() {
     Mixed: [1, 2, 3, 4, 5],
   };
 
+  // recalc questions when query changes
   const filteredQuestions = useMemo(() => {
     const diffKey = typeof difficulty === "string" ? difficulty : "Mixed";
     const allowed = diffMap[diffKey] || diffMap.Mixed;
@@ -32,14 +40,26 @@ export default function PracticePage() {
 
   const current = filteredQuestions[index] || null;
 
+  // reset session when topic/difficulty changes
+  useEffect(() => {
+    setIndex(0);
+    setSelected(null);
+    setShowExplanation(false);
+    setTotal(0);
+    setCorrect(0);
+    setStreak(0);
+    setXp(0);
+  }, [topic, difficulty]);
+
+  // ------------------ edge cases ------------------
+
+  // if user came here directly, tell them to go via SAT page
   if (!topic) {
     return (
       <div>
         <div className="page-header">
           <h1>Practice</h1>
-          <p>
-            Start from the SAT page to pick a topic and difficulty first.
-          </p>
+          <p>Start from the SAT page to pick a topic and difficulty.</p>
         </div>
         <div className="simple-card">
           <p>
@@ -47,7 +67,7 @@ export default function PracticePage() {
             <a href="/subjects/sat" className="btn secondary">
               SAT Topics
             </a>{" "}
-            and choose a tile. You&apos;ll be redirected here with a focused
+            and pick a tile. You&apos;ll be redirected here with a focused
             question set.
           </p>
         </div>
@@ -60,7 +80,7 @@ export default function PracticePage() {
       <div>
         <div className="page-header">
           <h1>Practice</h1>
-          <p>No questions found for this combination yet.</p>
+          <p>No questions found for this topic/difficulty yet.</p>
         </div>
         <div className="simple-card">
           <p>
@@ -68,7 +88,7 @@ export default function PracticePage() {
             Difficulty: <strong>{difficulty || "Mixed"}</strong>
           </p>
           <p>
-            Try choosing a different topic or difficulty level on the{" "}
+            Try a different topic or difficulty on the{" "}
             <a href="/subjects/sat">SAT page</a>.
           </p>
         </div>
@@ -76,14 +96,29 @@ export default function PracticePage() {
     );
   }
 
+  // ------------------ handlers ------------------
+
   function handleChoice(choice) {
     if (showExplanation) return;
     setSelected(choice);
   }
 
   function handleCheck() {
-    if (!selected) return;
+    if (!selected || showExplanation) return;
+
+    const isCorrect = selected === current.answer;
+
     setShowExplanation(true);
+    setTotal((t) => t + 1);
+
+    if (isCorrect) {
+      setCorrect((c) => c + 1);
+      setStreak((s) => s + 1);
+      // XP: base 10 + difficulty bonus + streak bonus
+      setXp((prev) => prev + 10 + current.difficulty * 2 + streak * 2);
+    } else {
+      setStreak(0);
+    }
   }
 
   function handleNext() {
@@ -95,6 +130,9 @@ export default function PracticePage() {
   }
 
   const isCorrect = selected === current.answer;
+  const accuracy = total > 0 ? Math.round((correct / total) * 100) : 0;
+
+  // ------------------ UI ------------------
 
   return (
     <div>
@@ -107,10 +145,52 @@ export default function PracticePage() {
         </p>
       </div>
 
+      {/* session stats bar */}
+      <div
+        className="simple-card"
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "1rem",
+          justifyContent: "space-between",
+          marginBottom: "1.4rem",
+        }}
+      >
+        <div>
+          <div style={{ fontSize: "0.8rem", color: "var(--muted)" }}>
+            Accuracy
+          </div>
+          <div style={{ fontWeight: 600 }}>{accuracy}%</div>
+        </div>
+        <div>
+          <div style={{ fontSize: "0.8rem", color: "var(--muted)" }}>
+            Correct
+          </div>
+          <div style={{ fontWeight: 600 }}>
+            {correct}/{total || "–"}
+          </div>
+        </div>
+        <div>
+          <div style={{ fontSize: "0.8rem", color: "var(--muted)" }}>
+            Streak
+          </div>
+          <div style={{ fontWeight: 600 }}>{streak}</div>
+        </div>
+        <div>
+          <div style={{ fontSize: "0.8rem", color: "var(--muted)" }}>
+            XP this session
+          </div>
+          <div style={{ fontWeight: 600 }}>{xp}</div>
+        </div>
+      </div>
+
+      {/* question card */}
       <div className="simple-card">
         <p style={{ fontSize: "0.95rem", marginBottom: "0.7rem" }}>
-          {current.section} &gt; {current.topic}
+          {current.section} &gt; {current.topic} · Difficulty{" "}
+          {current.difficulty}
         </p>
+
         <p style={{ whiteSpace: "pre-line" }}>{current.question}</p>
 
         <div style={{ marginTop: "1rem", display: "grid", gap: "0.5rem" }}>
