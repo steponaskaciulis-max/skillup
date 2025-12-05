@@ -1,5 +1,5 @@
 import Tile from "../../components/Tile";
-import { DifficultySelector } from "../../components/DifficultySelector";
+import DifficultySelector from "../../components/DifficultySelector";
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
