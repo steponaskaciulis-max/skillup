@@ -58,7 +58,7 @@ const DifficultySelector = ({ selectedDifficulty, onChange }) => {
           padding: 0.25rem 0.7rem;
           border-radius: 999px;
           border: 1px solid rgba(148, 163, 184, 0.5);
-          background: radial-gradient(circle at 0% 0%, #111827, #020617);
+          background: #020617;
           color: #e5e7eb;
         }
 
@@ -67,9 +67,8 @@ const DifficultySelector = ({ selectedDifficulty, onChange }) => {
           gap: 0.5rem;
           padding: 0.35rem;
           border-radius: 999px;
-          background: rgba(15, 23, 42, 0.6);
+          background: #020617;
           border: 1px solid rgba(148, 163, 184, 0.35);
-          backdrop-filter: blur(6px);
         }
 
         .pill {
@@ -103,7 +102,7 @@ const DifficultySelector = ({ selectedDifficulty, onChange }) => {
         }
 
         .pill.active {
-          background: radial-gradient(circle at 0% 0%, #1d4ed8, #020617);
+          background: #1d4ed8;
           box-shadow: 0 10px 24px rgba(37, 99, 235, 0.45);
         }
 
