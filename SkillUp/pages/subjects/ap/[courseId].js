@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import apCourses from '../../data/apCourses';
+import apCourses from '../../../data/apCourses';
 
 export default function APCoursePage() {
   const router = useRouter();
