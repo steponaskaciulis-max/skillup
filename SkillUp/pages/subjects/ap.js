@@ -3,23 +3,16 @@ import { DifficultySelector } from "../../components/DifficultySelector";
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import apCourses from "../../data/apCourses";
 
 export default function APPage() {
   const router = useRouter();
   const [difficulty, setDifficulty] = useState("Mixed");
 
-  const topics = [
-    { title: "AP Calculus", description: "Differentiation, integration, limits, and theorems." },
-    { title: "AP Chemistry", description: "Atoms, reactions, stoichiometry, thermodynamics." },
-    { title: "AP Biology", description: "Cell biology, genetics, ecology, evolution." },
-    { title: "AP Physics", description: "Mechanics, electricity, magnetism, waves." },
-    { title: "AP US History", description: "U.S. historical periods and events." },
-    { title: "AP World History", description: "Global history themes and civilizations." },
-    { title: "AP Statistics", description: "Data analysis, probability, distributions." },
-    { title: "AP English Language", description: "Rhetoric, composition, argument analysis." },
-    { title: "AP English Literature", description: "Literary analysis of prose and poetry." },
-    { title: "AP Psychology", description: "Behavioral, cognitive, and biological processes." }
-  ];
+  const topics = apCourses.map(course => ({
+    title: course.title,
+    description: course.description,
+  }));
 
   const startPractice = (topicName) => {
     router.push({
@@ -31,7 +24,7 @@ export default function APPage() {
   return (
     <div className="container">
       <nav className="breadcrumb">
-        <Link href="/">Home</Link> &gt;{' '}
+        <Link href="/">Home</Link> &gt;{" "}
         <Link href="/subjects">Subjects</Link> &gt; AP
       </nav>
 
