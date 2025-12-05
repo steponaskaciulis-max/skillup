@@ -16,3 +16,4 @@ export function DifficultySelector({ value, onChange }) {
     </div>
   );
 }
+export default DifficultySelector;
