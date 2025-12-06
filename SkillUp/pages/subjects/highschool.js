@@ -19,13 +19,13 @@ const TOPICS = [
   {
     id: "precalculus",
     title: "Precalculus",
-    description: "Functions, exponentials, and trigonometry for higher math.",
+    description: "Functions, exponentials, and trigonometry.",
     difficulty: "Medium",
   },
   {
-    id: "ap-prep",
-    title: "AP Prep",
-    description: "Challenging practice sets to prep for AP-level courses.",
+    id: "challenge-pack",
+    title: "Challenge Pack",
+    description: "Mixed high-difficulty sets to push your skills.",
     difficulty: "Hard",
   },
 ];
@@ -33,7 +33,7 @@ const TOPICS = [
 export default function HighSchoolPage() {
   const [selectedDifficulty, setSelectedDifficulty] = useState("Medium");
 
-  const filteredTopics = TOPICS.filter(
+  const visibleTopics = TOPICS.filter(
     (topic) => topic.difficulty === selectedDifficulty
   );
 
@@ -41,7 +41,7 @@ export default function HighSchoolPage() {
     <main className="page">
       <h1 className="title">High School</h1>
       <p className="subtitle">
-        Choose your difficulty and explore focused practice topics.
+        Pick your difficulty and explore focused practice topics.
       </p>
 
       <DifficultySelector
@@ -50,18 +50,16 @@ export default function HighSchoolPage() {
       />
 
       <div className="grid">
-        {filteredTopics.map((topic) => (
+        {visibleTopics.map((topic) => (
           <Tile
             key={topic.id}
             title={topic.title}
             description={topic.description}
-            // href or onClick if your Tile supports it
           />
         ))}
-        {filteredTopics.length === 0 && (
-          <p className="empty-state">
-            No topics for this difficulty yet. Try another level.
-          </p>
+
+        {visibleTopics.length === 0 && (
+          <p className="empty">No topics for this difficulty yet.</p>
         )}
       </div>
 
@@ -89,7 +87,7 @@ export default function HighSchoolPage() {
           gap: 1rem;
         }
 
-        .empty-state {
+        .empty {
           color: #9ca3af;
           font-size: 0.9rem;
         }
@@ -105,11 +103,5 @@ export default function HighSchoolPage() {
         }
       `}</style>
     </main>
-  );
-}
-
-        ))}
-      </div>
-    </div>
   );
 }
