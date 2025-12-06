@@ -1,359 +1,201 @@
-/* ===== Base ===== */
-:root {
-  --bg: #0f172a;
-  --bg-elevated: #111827;
-  --bg-card: #111827;
-  --text: #e5e7eb;
-  --muted: #9ca3af;
-  --accent: #8b5cf6; /* purple */
-  --accent-soft: rgba(139, 92, 246, 0.12);
-  --border-soft: rgba(148, 163, 184, 0.3);
-}
+/* -------------------------------------------------------
+   GLOBAL RESET + BASE STYLES
+-------------------------------------------------------- */
 
-*,
-*::before,
-*::after {
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
-  background: radial-gradient(circle at top, #1e293b 0, #020617 55%);
-  color: var(--text);
+html, body {
+  background: #0f172a; /* dark navy */
+  color: #f1f5f9;      /* light gray */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
 }
 
-/* ===== App Layout ===== */
-.app-root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+/* Utility colors */
+:root {
+  --accent: #3b82f6;
+  --accent-soft: rgba(59, 130, 246, 0.25);
+  --muted: #94a3b8;
+  --card-bg: rgba(15, 23, 42, 0.75);
+  --border: rgba(148, 163, 184, 0.35);
 }
 
-.main-content {
-  flex: 1;
-  width: 100%;
-  max-width: 1100px;
-  padding: 2rem 1.5rem 4rem;
-  margin: 0 auto;
-}
-
-/* ===== Header / Nav ===== */
-.site-header {
-  border-bottom: 1px solid rgba(148, 163, 184, 0.3);
-  backdrop-filter: blur(14px);
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background: rgba(15, 23, 42, 0.9);
-}
-
-.header-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0.9rem 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-}
-
-.brand {
-  display: flex;
-  flex-direction: column;
-}
-
-.brand-mark {
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  font-size: 1.05rem;
-}
-
-.brand-tagline {
-  font-size: 0.75rem;
-  color: var(--muted);
-}
-
-.main-nav {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.main-nav a {
-  color: var(--muted);
-  text-decoration: none;
-  font-size: 0.9rem;
-  padding: 0.4rem 0.9rem;
-  border-radius: 999px;
-  border: 1px solid transparent;
-  transition: 0.15s ease;
-}
-
-.main-nav a:hover {
-  color: #f9fafb;
-  border-color: var(--accent-soft);
-  background: rgba(15, 23, 42, 0.9);
-}
-
-/* ===== Home / Hero ===== */
-
-.home {
-  max-width: 960px;
-  margin: 0 auto;
-}
-
-.hero {
-  padding: 3rem 2rem;
-  border-radius: 24px;
-  background: radial-gradient(circle at top left, #1d2347 0, #020617 55%);
-  border: 1px solid rgba(148, 163, 184, 0.25);
-  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.9);
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.hero h1 {
-  font-size: clamp(2.4rem, 3vw, 2.9rem);
-  margin-bottom: 0.5rem;
-}
-
-.hero-subtitle {
-  margin-top: 0.75rem;
-  font-size: 1.05rem;
-  color: var(--muted);
-  max-width: 540px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.hero-price {
-  margin-top: 0.75rem;
-  font-size: 0.98rem;
-}
-
-.hero-price strong {
-  color: var(--accent);
-}
-
-.hero-buttons {
-  margin-top: 1.8rem;
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.btn {
-  padding: 0.75rem 1.6rem;
-  border-radius: 999px;
-  text-decoration: none;
-  font-weight: 600;
-  border: 1px solid transparent;
-  font-size: 0.95rem;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  transition: 0.18s ease;
-}
-
-.btn.primary {
-  background: var(--accent);
-  color: #f9fafb;
-  box-shadow: 0 12px 36px rgba(139, 92, 246, 0.5);
-}
-
-.btn.primary:hover {
-  filter: brightness(1.06);
-  transform: translateY(-1px);
-}
-
-.btn.secondary {
-  background: transparent;
-  border-color: var(--accent-soft);
-  color: var(--accent);
-}
-
-.btn.secondary:hover {
-  background: var(--accent-soft);
-}
-
-/* ===== Sections / Cards ===== */
-
-.sections section {
-  margin-bottom: 2.5rem;
-  background: rgba(15, 23, 42, 0.7);
-  border-radius: 18px;
-  padding: 1.6rem 1.5rem 1.8rem;
-  border: 1px solid rgba(148, 163, 184, 0.25);
-  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.7);
-}
-
-.sections h2 {
-  margin-top: 0;
-  margin-bottom: 0.6rem;
-  font-size: 1.3rem;
-}
-
-.sections p,
-.sections li {
-  font-size: 0.95rem;
-  color: #d1d5db;
-}
-
-.sections ul {
-  padding-left: 1.1rem;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.1rem;
-  margin-top: 1.1rem;
-}
-
-.card {
-  background: var(--bg-card);
-  padding: 1.1rem 1rem;
-  border-radius: 16px;
-  border: 1px solid rgba(148, 163, 184, 0.35);
-}
-
-/* ===== SAT Tile Grid ===== */
-.tile-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.1rem;
-  margin-top: 1.2rem;
-}
-
-.tile-card {
-  background: var(--bg-card);
-  padding: 1.2rem 1.1rem;
-  border-radius: 14px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(148, 163, 184, 0.4);
-  transition: transform 0.18s ease, box-shadow 0.18s ease,
-    border-color 0.18s ease;
-  cursor: pointer;
-}
-
-.tile-card h3 {
-  margin: 0 0 0.3rem;
-  font-size: 1.05rem;
-}
-
-.tile-card p {
-  margin: 0;
-  font-size: 0.9rem;
-  color: var(--muted);
-}
-
-.tile-card:hover {
-  transform: translateY(-2px) scale(1.01);
-  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.9);
-  border-color: var(--accent);
-}
-
-/* ===== Difficulty Selector ===== */
-.difficulty-selector {
-  display: inline-flex;
-  padding: 0.25rem;
-  border-radius: 999px;
-  background: rgba(15, 23, 42, 0.9);
-  border: 1px solid rgba(148, 163, 184, 0.4);
-  gap: 0.25rem;
-  margin-bottom: 1.2rem;
-  flex-wrap: wrap;
-}
-
-.diff-btn {
-  background: transparent;
-  border-radius: 999px;
-  border: none;
-  padding: 0.45rem 0.9rem;
-  font-size: 0.85rem;
-  color: var(--muted);
-  cursor: pointer;
-  transition: 0.18s ease;
-}
-
-.diff-btn.active {
-  background: var(--accent);
-  color: #f9fafb;
-}
-
-/* ===== Breadcrumb ===== */
-.breadcrumb {
-  font-size: 0.8rem;
-  color: var(--muted);
-  margin-bottom: 0.7rem;
-}
-
-.breadcrumb a {
-  color: var(--muted);
-  text-decoration: none;
-}
-
-.breadcrumb a:hover {
-  color: var(--accent);
-}
-
-/* ===== Practice / Forum / Contact basic layout ===== */
+/* -------------------------------------------------------
+   PAGE HEADER
+-------------------------------------------------------- */
 
 .page-header {
   margin-bottom: 1.5rem;
 }
 
 .page-header h1 {
-  margin-bottom: 0.3rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
 }
 
 .page-header p {
-  margin: 0;
-  color: var(--muted);
   font-size: 0.95rem;
+  color: var(--muted);
 }
+
+/* -------------------------------------------------------
+   CARD COMPONENT
+-------------------------------------------------------- */
 
 .simple-card {
-  background: rgba(15, 23, 42, 0.7);
-  padding: 1.4rem 1.3rem;
-  border-radius: 16px;
-  border: 1px solid rgba(148, 163, 184, 0.4);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  padding: 1.25rem;
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+  margin-bottom: 1.5rem;
 }
 
-/* ===== Footer ===== */
+/* -------------------------------------------------------
+   BUTTONS
+-------------------------------------------------------- */
 
-.site-footer {
-  border-top: 1px solid rgba(148, 163, 184, 0.3);
-  padding: 1rem 1.5rem 1.4rem;
+button {
+  font-family: inherit;
+}
+
+.btn {
+  padding: 0.55rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  font-size: 0.95rem;
+  transition: 0.18s ease;
+}
+
+.btn.primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn.primary:hover {
+  background: #2563eb;
+}
+
+.btn.secondary {
+  background: rgba(148, 163, 184, 0.2);
+  border: 1px solid var(--border);
+  color: #f1f5f9;
+}
+
+.btn.secondary:hover {
+  background: rgba(148, 163, 184, 0.3);
+}
+
+/* -------------------------------------------------------
+   TILE COMPONENT
+-------------------------------------------------------- */
+
+.tile {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  padding: 1.1rem;
+  border-radius: 14px;
   text-align: center;
-  font-size: 0.8rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+  user-select: none;
+}
+
+.tile:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: 0 8px 20px rgba(30, 58, 138, 0.35);
+}
+
+/* -------------------------------------------------------
+   DIFFICULTY SELECTOR (pill style)
+-------------------------------------------------------- */
+
+.difficulty-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.difficulty-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.difficulty-header .label {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
   color: var(--muted);
 }
 
-.site-footer .footer-meta {
-  margin-top: 0.2rem;
+.difficulty-header .chip {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(30, 41, 59, 0.9);
 }
 
-/* Responsive tweaks */
-@media (max-width: 720px) {
-  .header-inner {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+.pill-row {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.35rem;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid var(--border);
+}
 
-  .hero {
-    padding: 2.2rem 1.4rem;
-  }
+.pill {
+  flex: 1;
+  padding: 0.55rem 0.75rem;
+  border-radius: 999px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: 0.18s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  .main-nav {
-    width: 100%;
-    justify-content: flex-start;
-    flex-wrap: wrap;
+.pill-label {
+  font-size: 0.78rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.pill:hover {
+  background: rgba(148, 163, 184, 0.18);
+}
+
+.pill.active {
+  background: var(--accent);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.35);
+}
+
+.pill.active .pill-label {
+  color: #fff;
+}
+
+/* -------------------------------------------------------
+   RESPONSIVE
+-------------------------------------------------------- */
+
+@media (max-width: 640px) {
+  .pill-label {
+    font-size: 0.7rem;
   }
 }
