@@ -6,9 +6,10 @@ export default function Layout({ children }) {
           <div className="brand">
             <span className="brand-mark">SkillUp</span>
             <span className="brand-tagline">
-              AP, SAT &amp; High School Mastery
+              AP, SAT & High School Mastery
             </span>
           </div>
+
           <nav className="main-nav">
             <a href="/">Home</a>
             <a href="/subjects">Subjects</a>
