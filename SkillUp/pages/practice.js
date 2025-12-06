@@ -1,6 +1,32 @@
+// SkillUp/pages/practice.js
+
 import { useRouter } from "next/router";
 import { useMemo, useState, useEffect } from "react";
 import { satQuestions } from "../data/satQuestions";
+
+// Map our new UI labels to difficulty buckets
+const DIFF_BUCKETS = {
+  Easy: [1, 2],
+  Medium: [2, 3, 4],
+  Hard: [4, 5],
+  Mixed: [1, 2, 3, 4, 5],
+};
+
+// Support old labels too, just in case any old links still use them
+const LEGACY_LABEL_MAP = {
+  Beginner: "Easy",
+  Intermediate: "Medium",
+  Advanced: "Hard",
+};
+
+function normalizeDifficulty(rawDifficulty) {
+  if (typeof rawDifficulty !== "string" || rawDifficulty.length === 0) {
+    return "Medium"; // default if nothing provided
+  }
+  // Map old labels → new labels if needed
+  const mapped = LEGACY_LABEL_MAP[rawDifficulty];
+  return mapped || rawDifficulty;
+}
 
 export default function PracticePage() {
   const router = useRouter();
@@ -16,18 +42,12 @@ export default function PracticePage() {
   const [streak, setStreak] = useState(0);
   const [xp, setXp] = useState(0);
 
-  // map difficulty labels to allowed numeric difficulties
-  const diffMap = {
-    Beginner: [1, 2],
-    Intermediate: [2, 3],
-    Advanced: [3, 4, 5],
-    Mixed: [1, 2, 3, 4, 5],
-  };
+  const normalizedDifficulty = normalizeDifficulty(difficulty);
 
-  // recalc questions when query changes
+  // recalc questions when topic/difficulty changes
   const filteredQuestions = useMemo(() => {
-    const diffKey = typeof difficulty === "string" ? difficulty : "Mixed";
-    const allowed = diffMap[diffKey] || diffMap.Mixed;
+    const allowed =
+      DIFF_BUCKETS[normalizedDifficulty] || DIFF_BUCKETS.Mixed;
 
     let qs = satQuestions.filter((q) => allowed.includes(q.difficulty));
 
@@ -36,7 +56,7 @@ export default function PracticePage() {
     }
 
     return qs;
-  }, [topic, difficulty]);
+  }, [topic, normalizedDifficulty]);
 
   const current = filteredQuestions[index] || null;
 
@@ -49,7 +69,7 @@ export default function PracticePage() {
     setCorrect(0);
     setStreak(0);
     setXp(0);
-  }, [topic, difficulty]);
+  }, [topic, normalizedDifficulty]);
 
   // ------------------ edge cases ------------------
 
@@ -85,7 +105,7 @@ export default function PracticePage() {
         <div className="simple-card">
           <p>
             Topic: <strong>{topic}</strong> <br />
-            Difficulty: <strong>{difficulty || "Mixed"}</strong>
+            Difficulty: <strong>{normalizedDifficulty || "Mixed"}</strong>
           </p>
           <p>
             Try a different topic or difficulty on the{" "}
@@ -140,7 +160,7 @@ export default function PracticePage() {
         <h1>Practice</h1>
         <p>
           Topic: <strong>{topic}</strong> · Difficulty:{" "}
-          <strong>{difficulty || "Mixed"}</strong> · Question{" "}
+          <strong>{normalizedDifficulty || "Mixed"}</strong> · Question{" "}
           {index + 1} of {filteredQuestions.length}
         </p>
       </div>
@@ -193,7 +213,13 @@ export default function PracticePage() {
 
         <p style={{ whiteSpace: "pre-line" }}>{current.question}</p>
 
-        <div style={{ marginTop: "1rem", display: "grid", gap: "0.5rem" }}>
+        <div
+          style={{
+            marginTop: "1rem",
+            display: "grid",
+            gap: "0.5rem",
+          }}
+        >
           {current.choices.map((c) => (
             <button
               key={c}
@@ -208,7 +234,9 @@ export default function PracticePage() {
                     ? "1px solid var(--accent)"
                     : "1px solid rgba(148, 163, 184, 0.4)",
                 background:
-                  selected === c ? "var(--accent-soft)" : "rgba(15,23,42,0.7)",
+                  selected === c
+                    ? "var(--accent-soft)"
+                    : "rgba(15,23,42,0.7)",
                 color: "inherit",
                 cursor: "pointer",
               }}
@@ -218,7 +246,13 @@ export default function PracticePage() {
           ))}
         </div>
 
-        <div style={{ marginTop: "1rem", display: "flex", gap: "0.75rem" }}>
+        <div
+          style={{
+            marginTop: "1rem",
+            display: "flex",
+            gap: "0.75rem",
+          }}
+        >
           <button
             type="button"
             className="btn primary"
