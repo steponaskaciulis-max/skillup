@@ -7,7 +7,7 @@ const SAT_SECTIONS = [
   {
     id: "sat-math-easy",
     title: "SAT Math – Easy",
-    description: "Warm-up questions on algebra and arithmetic.",
+    description: "Gentle warm-up questions on arithmetic and algebra.",
     difficulty: "Easy",
   },
   {
@@ -19,7 +19,7 @@ const SAT_SECTIONS = [
   {
     id: "sat-math-hard",
     title: "SAT Math – Hard",
-    description: "Tricky multi-step questions and dense word problems.",
+    description: "Challenging questions that feel like the real exam.",
     difficulty: "Hard",
   },
 ];
@@ -51,10 +51,9 @@ export default function SATPage() {
             description={section.description}
           />
         ))}
+
         {visibleSections.length === 0 && (
-          <p className="empty-state">
-            No sections for this difficulty yet. Try another level.
-          </p>
+          <p className="empty">No sections for this difficulty yet.</p>
         )}
       </div>
 
@@ -82,7 +81,7 @@ export default function SATPage() {
           gap: 1rem;
         }
 
-        .empty-state {
+        .empty {
           color: #9ca3af;
           font-size: 0.9rem;
         }
