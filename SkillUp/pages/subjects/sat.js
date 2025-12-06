@@ -1,69 +1,102 @@
+// SkillUp/pages/subjects/sat.js
+import { useState } from "react";
 import Tile from "../../components/Tile";
 import DifficultySelector from "../../components/DifficultySelector";
-import { useState } from "react";
-import Link from "next/link";
-import { useRouter } from "next/router";
+
+const SAT_SECTIONS = [
+  {
+    id: "sat-math-easy",
+    title: "SAT Math – Easy",
+    description: "Warm-up questions on algebra and arithmetic.",
+    difficulty: "Easy",
+  },
+  {
+    id: "sat-math-medium",
+    title: "SAT Math – Medium",
+    description: "Word problems, functions, and multi-step questions.",
+    difficulty: "Medium",
+  },
+  {
+    id: "sat-math-hard",
+    title: "SAT Math – Hard",
+    description: "Tricky multi-step questions and dense word problems.",
+    difficulty: "Hard",
+  },
+];
 
 export default function SATPage() {
-  const router = useRouter();
-  const [difficulty, setDifficulty] = useState("Mixed");
+  const [selectedDifficulty, setSelectedDifficulty] = useState("Medium");
 
-  // All SAT topics
-  const topics = [
-    { title: "Algebra", description: "Equations, expressions, and manipulation." },
-    { title: "Functions", description: "Graphs, transformations, relationships." },
-    { title: "Geometry", description: "Shapes, angles, proofs, and theorems." },
-    { title: "Statistics", description: "Data interpretation, charts, probability." },
-    { title: "Word Problems", description: "Real-world quantitative reasoning." },
-    { title: "Reading – Main Idea", description: "Identify central claims." },
-    { title: "Reading – Inference", description: "Logical deductions from text." },
-    { title: "Reading – Evidence", description: "Selecting supporting lines." },
-    { title: "Writing – Punctuation", description: "Comma rules, sentence clarity." },
-    { title: "Writing – Transitions", description: "Logical flow between ideas." },
-    { title: "Writing – Concision", description: "Eliminating redundancy." },
-  ];
-
-  // When clicking a tile, go to practice mode with topic+difficulty
-  const startPractice = (topicName) => {
-    router.push({
-      pathname: "/practice",
-      query: { topic: topicName, difficulty },
-    });
-  };
+  const visibleSections = SAT_SECTIONS.filter(
+    (section) => section.difficulty === selectedDifficulty
+  );
 
   return (
-    <div className="container">
-      <nav className="breadcrumb">
-        <Link href="/">Home</Link> &gt;{" "}
-        <Link href="/subjects">Subjects</Link> &gt; SAT
-      </nav>
-
-      <div className="page-header">
-        <h1>SAT Preparation</h1>
-        <p>
-          Choose a topic and difficulty to start focused SAT practice. The engine
-          will adapt to your level while you answer questions.
-        </p>
-      </div>
-
-      <h2>Difficulty</h2>
-      <DifficultySelector value={difficulty} onChange={setDifficulty} />
-
-      <h2>Topics</h2>
-      <p style={{ fontSize: "0.9rem", color: "var(--muted)" }}>
-        Select a topic to begin practice.
+    <main className="page">
+      <h1 className="title">SAT Practice</h1>
+      <p className="subtitle">
+        Tune the difficulty and drill SAT-style questions.
       </p>
 
-      <div className="tile-grid">
-        {topics.map((t) => (
+      <DifficultySelector
+        selectedDifficulty={selectedDifficulty}
+        onChange={setSelectedDifficulty}
+      />
+
+      <div className="grid">
+        {visibleSections.map((section) => (
           <Tile
-            key={t.title}
-            title={t.title}
-            description={t.description}
-            onClick={() => startPractice(t.title)}
+            key={section.id}
+            title={section.title}
+            description={section.description}
           />
         ))}
+        {visibleSections.length === 0 && (
+          <p className="empty-state">
+            No sections for this difficulty yet. Try another level.
+          </p>
+        )}
       </div>
-    </div>
+
+      <style jsx>{`
+        .page {
+          max-width: 960px;
+          margin: 0 auto;
+          padding: 2rem 1.5rem 3rem;
+        }
+
+        .title {
+          font-size: 2rem;
+          font-weight: 700;
+          margin-bottom: 0.25rem;
+        }
+
+        .subtitle {
+          color: #6b7280;
+          margin-bottom: 1.5rem;
+        }
+
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+          gap: 1rem;
+        }
+
+        .empty-state {
+          color: #9ca3af;
+          font-size: 0.9rem;
+        }
+
+        @media (max-width: 640px) {
+          .page {
+            padding: 1.5rem 1rem 2.5rem;
+          }
+
+          .title {
+            font-size: 1.6rem;
+          }
+        }
+      `}</style>
+    </main>
   );
 }
