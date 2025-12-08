@@ -1,3 +1,5 @@
+// SkillUp/pages/subjects/index.js
+
 export default function Subjects() {
   return (
     <div>
@@ -14,10 +16,12 @@ export default function Subjects() {
             Go to SAT
           </a>
         </div>
+
         <div className="card">
           <h3>AP Courses</h3>
           <p>AP-level content coming online step-by-step.</p>
         </div>
+
         <div className="card">
           <h3>High School (10–12)</h3>
           <p>
