@@ -199,3 +199,85 @@ button {
     font-size: 0.7rem;
   }
 }
+/* -------------------------------------------------------
+   LAYOUT WRAPPER
+-------------------------------------------------------- */
+
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* -------------------------------------------------------
+   NAVBAR
+-------------------------------------------------------- */
+
+.navbar {
+  width: 100%;
+  backdrop-filter: blur(8px);
+  background: rgba(15, 23, 42, 0.7);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.nav-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.nav-link {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: 0.2s;
+}
+
+.nav-link:hover {
+  color: #fff;
+}
+
+/* -------------------------------------------------------
+   MAIN CONTAINER
+-------------------------------------------------------- */
+
+.main-container {
+  flex: 1;
+  max-width: 960px;
+  padding: 1.5rem 1.25rem 3rem;
+  margin: 0 auto;
+}
+
+/* -------------------------------------------------------
+   FOOTER
+-------------------------------------------------------- */
+
+.footer {
+  width: 100%;
+  text-align: center;
+  padding: 1.5rem 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--border);
+  margin-top: 2rem;
+  background: rgba(15, 23, 42, 0.6);
+}
