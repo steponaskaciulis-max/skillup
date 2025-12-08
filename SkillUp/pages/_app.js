@@ -1,3 +1,4 @@
+// SkillUp/pages/_app.js
 import "../styles/global.css";
 import Layout from "../components/Layout";
 
