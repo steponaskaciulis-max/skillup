@@ -1,3 +1,5 @@
+// SkillUp/pages/contact.js
+
 export default function ContactPage() {
   return (
     <div>
@@ -14,11 +16,10 @@ export default function ContactPage() {
           </a>
         </p>
         <p>
-          TikTok: <em>coming soon</em> – this site will link directly to your study
-          content and breakdowns.
+          TikTok: <em>coming soon</em> – this site will link directly to your
+          study content and breakdowns.
         </p>
       </div>
     </div>
   );
 }
-
