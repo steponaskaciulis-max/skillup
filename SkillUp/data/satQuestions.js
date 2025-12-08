@@ -2,7 +2,7 @@
 
 // difficulty scale: 1 = easiest, 5 = hardest
 
-export const satQuestions = [
+const satQuestions = [
   // ===== MATH: ALGEBRA =====
   {
     id: "M1",
@@ -25,8 +25,7 @@ export const satQuestions = [
     question: "Which of the following is equivalent to 4(x - 2) + 3x?",
     choices: ["7x - 8", "x - 8", "7x + 8", "4x - 2"],
     answer: "7x - 8",
-    explanation:
-      "Distribute 4: 4x - 8. Then add 3x to get 7x - 8.",
+    explanation: "Distribute 4: 4x - 8. Then add 3x to get 7x - 8.",
   },
 
   // ===== MATH: FUNCTIONS =====
@@ -71,8 +70,7 @@ export const satQuestions = [
       "A gym charges a $20 sign-up fee and $15 per month. Which expression represents the total cost for m months?",
     choices: ["20m + 15", "15m + 20", "35m", "20m - 15"],
     answer: "15m + 20",
-    explanation:
-      "You pay 20 once and 15 per month: total cost = 15m + 20.",
+    explanation: "You pay 20 once and 15 per month: total cost = 15m + 20.",
   },
 
   // ===== READING: MAIN IDEA =====
@@ -157,3 +155,5 @@ export const satQuestions = [
       "This option is direct and avoids wordy phrases like 'the reason why' and 'due to the fact that.'",
   },
 ];
+
+export default satQuestions;
