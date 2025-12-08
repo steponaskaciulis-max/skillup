@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/router";
 import { useMemo, useState, useEffect } from "react";
-import { satQuestions } from "../data/satQuestions";
+import satQuestions from "../data/satQuestions";
 
 // Map our new UI labels to difficulty buckets
 const DIFF_BUCKETS = {
