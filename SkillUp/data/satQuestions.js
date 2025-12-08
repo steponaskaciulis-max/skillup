@@ -3,7 +3,6 @@
 // difficulty scale: 1 = easiest, 5 = hardest
 
 const satQuestions = [
-  // ===== MATH: ALGEBRA =====
   {
     id: "M1",
     section: "Math",
@@ -14,7 +13,7 @@ const satQuestions = [
     choices: ["3", "4", "5", "6"],
     answer: "4",
     explanation:
-      "Subtract 5 from both sides: 3x = 12. Then divide by 3 to get x = 4.",
+      "Subtract 5 from both sides: 3x = 12. Then divide by 3 to get x = 4."
   },
   {
     id: "M2",
@@ -25,10 +24,8 @@ const satQuestions = [
     question: "Which of the following is equivalent to 4(x - 2) + 3x?",
     choices: ["7x - 8", "x - 8", "7x + 8", "4x - 2"],
     answer: "7x - 8",
-    explanation: "Distribute 4: 4x - 8. Then add 3x to get 7x - 8.",
+    explanation: "Distribute 4: 4x - 8. Then add 3x to get 7x - 8."
   },
-
-  // ===== MATH: FUNCTIONS =====
   {
     id: "M3",
     section: "Math",
@@ -38,7 +35,7 @@ const satQuestions = [
     question: "If f(x) = 2x + 1, what is f(4)?",
     choices: ["5", "7", "8", "9"],
     answer: "9",
-    explanation: "f(4) = 2(4) + 1 = 9.",
+    explanation: "f(4) = 2(4) + 1 = 9."
   },
   {
     id: "M4",
@@ -48,18 +45,11 @@ const satQuestions = [
     type: "multiple-choice",
     question:
       "The graph of y = f(x) is shifted up by 3 units. Which equation represents the new function?",
-    choices: [
-      "y = f(x) + 3",
-      "y = f(x) - 3",
-      "y = f(x + 3)",
-      "y = f(x - 3)",
-    ],
+    choices: ["y = f(x) + 3", "y = f(x) - 3", "y = f(x + 3)", "y = f(x - 3)"],
     answer: "y = f(x) + 3",
     explanation:
-      "Adding a constant outside f(x) translates the graph vertically; +3 moves it up.",
+      "Adding a constant outside f(x) translates the graph vertically; +3 moves it up."
   },
-
-  // ===== MATH: WORD PROBLEMS =====
   {
     id: "M5",
     section: "Math",
@@ -70,14 +60,12 @@ const satQuestions = [
       "A gym charges a $20 sign-up fee and $15 per month. Which expression represents the total cost for m months?",
     choices: ["20m + 15", "15m + 20", "35m", "20m - 15"],
     answer: "15m + 20",
-    explanation: "You pay 20 once and 15 per month: total cost = 15m + 20.",
+    explanation: "You pay 20 once and 15 per month: total cost = 15m + 20."
   },
-
-  // ===== READING: MAIN IDEA =====
   {
     id: "R1",
     section: "Reading",
-    topic: "Reading – Main Idea",
+    topic: "Reading - Main Idea",
     difficulty: 2,
     type: "multiple-choice",
     question:
@@ -86,19 +74,17 @@ const satQuestions = [
       "Simple questions rarely lead to useful discoveries.",
       "Curiosity and simple questions often drive major scientific breakthroughs.",
       "Only professional scientists are capable of important discoveries.",
-      "Scientific discovery depends entirely on advanced technology.",
+      "Scientific discovery depends entirely on advanced technology."
     ],
     answer:
       "Curiosity and simple questions often drive major scientific breakthroughs.",
     explanation:
-      "The focus is on curiosity and basic questions leading to important discoveries.",
+      "The focus is on curiosity and basic questions leading to important discoveries."
   },
-
-  // ===== READING: INFERENCE =====
   {
     id: "R2",
     section: "Reading",
-    topic: "Reading – Inference",
+    topic: "Reading - Inference",
     difficulty: 3,
     type: "multiple-choice",
     question:
@@ -107,18 +93,16 @@ const satQuestions = [
       "Proof that the researcher is unqualified.",
       "A sign that further research is pointless.",
       "A necessary part of narrowing down correct ideas.",
-      "Something that should be avoided at all costs.",
+      "Something that should be avoided at all costs."
     ],
     answer: "A necessary part of narrowing down correct ideas.",
     explanation:
-      "Closing a 'wrong door' suggests progress toward the right answer, not pointless failure.",
+      "Closing a 'wrong door' suggests progress toward the right answer, not pointless failure."
   },
-
-  // ===== WRITING: PUNCTUATION =====
   {
     id: "W1",
     section: "Writing",
-    topic: "Writing – Punctuation",
+    topic: "Writing - Punctuation",
     difficulty: 2,
     type: "multiple-choice",
     question:
@@ -127,18 +111,16 @@ const satQuestions = [
       "shops, however others",
       "shops; however, others",
       "shops however, others",
-      "shops; however others",
+      "shops; however others"
     ],
     answer: "shops; however, others",
     explanation:
-      "Two independent clauses are joined by 'however,' a conjunctive adverb; it should follow a semicolon and be followed by a comma.",
+      "Two independent clauses are joined by 'however,' a conjunctive adverb; it should follow a semicolon and be followed by a comma."
   },
-
-  // ===== WRITING: CONCISION =====
   {
     id: "W2",
     section: "Writing",
-    topic: "Writing – Concision",
+    topic: "Writing - Concision",
     difficulty: 2,
     type: "multiple-choice",
     question:
@@ -147,13 +129,14 @@ const satQuestions = [
       "The experiment was unsuccessful because the equipment was not calibrated.",
       "The reason why the experiment was unsuccessful was because the equipment lacked calibration.",
       "Due to the fact that the equipment was not calibrated, the experiment was unsuccessful.",
-      "The experiment, which was unsuccessful, was because the equipment was not calibrated.",
+      "The experiment, which was unsuccessful, was because the equipment was not calibrated."
     ],
     answer:
       "The experiment was unsuccessful because the equipment was not calibrated.",
     explanation:
-      "This option is direct and avoids wordy phrases like 'the reason why' and 'due to the fact that.'",
-  },
+      "This option is direct and avoids wordy phrases like 'the reason why' and 'due to the fact that.'"
+  }
 ];
 
 export default satQuestions;
+export { satQuestions };
