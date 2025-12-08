@@ -1,33 +1,27 @@
+// SkillUp/components/Layout.js
+
+import Link from "next/link";
+
 export default function Layout({ children }) {
   return (
-    <div className="app-root">
-      <header className="site-header">
-        <div className="header-inner">
-          <div className="brand">
-            <span className="brand-mark">SkillUp</span>
-            <span className="brand-tagline">
-              AP, SAT & High School Mastery
-            </span>
+    <div className="layout">
+      <nav className="navbar">
+        <div className="nav-inner">
+          <Link href="/" className="nav-logo">SkillUp</Link>
+
+          <div className="nav-links">
+            <Link href="/subjects" className="nav-link">Subjects</Link>
+            <Link href="/practice" className="nav-link">Practice</Link>
+            <Link href="/forum" className="nav-link">Forum</Link>
+            <Link href="/contact" className="nav-link">Contact</Link>
           </div>
-
-          <nav className="main-nav">
-            <a href="/">Home</a>
-            <a href="/subjects">Subjects</a>
-            <a href="/practice">Practice</a>
-            <a href="/forum">Forum</a>
-            <a href="/contact">Contact</a>
-          </nav>
         </div>
-      </header>
+      </nav>
 
-      <main className="main-content">{children}</main>
+      <main className="main-container">{children}</main>
 
-      <footer className="site-footer">
-        <p>© {new Date().getFullYear()} SkillUp. All rights reserved.</p>
-        <p className="footer-meta">
-          TikTok: <span>coming soon</span> · Membership:{" "}
-          <strong>$20/month</strong>
-        </p>
+      <footer className="footer">
+        <p>© {new Date().getFullYear()} SkillUp — Study Smarter.</p>
       </footer>
     </div>
   );
