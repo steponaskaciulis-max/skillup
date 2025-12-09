@@ -1,89 +1,112 @@
-export default function Home() {
+// SkillUp/pages/index.js
+import Link from "next/link";
+
+export default function HomePage() {
   return (
-    <div className="home">
-      <header className="hero">
-        <h1>SkillUp</h1>
-        <p className="hero-subtitle">
-          Academic improvement for AP, SAT, and high school students in grades
-          10–12.
-        </p>
-        <p className="hero-price">
-          Membership: <strong>$20</strong> / month
-        </p>
-        <div className="hero-buttons">
-          <a href="/subjects/sat" className="btn primary">
-            Start SAT Prep
-          </a>
-          <a href="/practice" className="btn secondary">
-            Try Practice Mode
-          </a>
-        </div>
-      </header>
-
-      <main className="sections">
-        <section>
-          <h2>Who is SkillUp for?</h2>
+    <div>
+      {/* HERO */}
+      <section className="home-hero">
+        <div className="home-hero-text">
+          <span className="home-badge">SAT • AP • High School</span>
+          <h1>
+            Get unstuck fast.
+            <span className="home-hero-highlight"> SkillUp</span> your score.
+          </h1>
           <p>
-            SkillUp is built for motivated students preparing for the SAT, AP
-            exams, and high school classes. Everything is organized by topic and
-            difficulty so you don&apos;t waste time figuring out what to study.
+            Bite-sized explanations, cheat sheets, and practice questions for
+            students who don’t have time to dig through 40-minute YouTube videos.
           </p>
-        </section>
 
-        <section>
-          <h2>What you get</h2>
-          <ul>
-            <li>📚 Detailed cheat sheets across SAT, AP, and HS subjects.</li>
-            <li>🧠 Smart practice that adapts to your level.</li>
-            <li>💬 A members-only forum for questions and discussion.</li>
-            <li>🎯 XP, streaks, and visible progress tracking.</li>
+          <div className="home-hero-actions">
+            <Link href="/practice" className="btn primary">
+              Start practice
+            </Link>
+            <Link href="/subjects" className="btn secondary">
+              Browse subjects
+            </Link>
+          </div>
+
+          <ul className="home-hero-bullets">
+            <li>✅ SAT Math, Reading, and Writing</li>
+            <li>✅ AP courses coming online step-by-step</li>
+            <li>✅ Designed for 10–12th grade students</li>
           </ul>
-        </section>
+        </div>
 
-        <section>
-          <h2>Subjects covered</h2>
-          <div className="grid">
-            <div className="card">
-              <h3>SAT</h3>
-              <p>
-                Math, Reading, and Writing with realistic questions and full
-                explanations.
-              </p>
+        <div className="home-hero-panel">
+          <div className="home-stat-card">
+            <p className="label">Practice mode</p>
+            <p className="value">Mixed difficulty</p>
+            <p className="hint">Smart rotation of algebra, functions, and word problems.</p>
+          </div>
+          <div className="home-stat-row">
+            <div className="home-mini-card">
+              <p className="label">Question types</p>
+              <p className="value">Math • Reading • Writing</p>
             </div>
-            <div className="card">
-              <h3>AP Courses</h3>
-              <p>
-                AP Calc, AP Chem, AP Bio, APUSH, AP Lang, AP Lit, and more
-                (rolling expansion).
-              </p>
-            </div>
-            <div className="card">
-              <h3>High School (10–12)</h3>
-              <p>
-                Algebra II, Geometry, Pre-Calc, Biology, Chemistry, Physics,
-                English, and History.
-              </p>
+            <div className="home-mini-card">
+              <p className="label">Session length</p>
+              <p className="value">10–15 mins</p>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section>
-          <h2>Contact & community</h2>
+      {/* SUBJECTS PREVIEW */}
+      <section className="home-section">
+        <div className="home-section-header">
+          <h2>What can I practice?</h2>
           <p>
-            A dedicated forum will let members discuss problems, share study
-            tips, and stay accountable.
+            Jump into targeted sets or mix topics to simulate real test sections.
           </p>
-          <p>
-            Contact the team :{" "}
-            <a href="mailto:steponas.kaciulis@gmail.com">
-              steponas.kaciulis@gmail.com
-            </a>
-          </p>
-          <p>
-            TikTok page: <em>coming soon</em>.
-          </p>
-        </section>
-      </main>
+        </div>
+
+        <div className="grid">
+          <div className="card">
+            <h3>SAT</h3>
+            <p>
+              Math, Reading, and Writing practice with quick explanations so you
+              actually understand your mistakes.
+            </p>
+            <Link href="/subjects/sat" className="btn secondary">
+              Go to SAT
+            </Link>
+          </div>
+
+          <div className="card">
+            <h3>AP Courses</h3>
+            <p>
+              AP-level content rolling out course by course. Start with core problem
+              types and build up to full practice sets.
+            </p>
+            <Link href="/subjects/ap" className="btn secondary">
+              Browse AP
+            </Link>
+          </div>
+
+          <div className="card">
+            <h3>High School (10–12)</h3>
+            <p>
+              Core subject support in math, science, English, and social sciences —
+              tuned to what actually shows up on tests.
+            </p>
+            <Link href="/subjects/highschool" className="btn secondary">
+              Explore high school
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA STRIP */}
+      <section className="home-strip">
+        <p>
+          Want a breakdown of your own school’s tests or assignments?
+          <span> Reach out and we’ll build around it.</span>
+        </p>
+        <Link href="/contact" className="btn primary">
+          Contact
+        </Link>
+      </section>
     </div>
   );
 }
