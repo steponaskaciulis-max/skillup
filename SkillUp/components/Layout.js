@@ -7,7 +7,12 @@ export default function Layout({ children }) {
       <header className="site-header">
         <div className="site-header-inner">
           <Link href="/" className="brand">
-            <span className="brand-mark">S</span>
+            <img 
+  src="/logo.png" 
+  alt="Logo" 
+  className="brand-logo"
+/>
+
             <span className="brand-text">SkillUp</span>
           </Link>
 
