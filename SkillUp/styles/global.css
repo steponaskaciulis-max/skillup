@@ -97,6 +97,13 @@ body {
   color: #e5e7eb;
 }
 
+.brand-logo {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  object-fit: cover;
+}
+
 /* Nav links */
 
 .nav-links {
