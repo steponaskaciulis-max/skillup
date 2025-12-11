@@ -1,8 +1,8 @@
-// SkillUp/pages/sat.js
+// SkillUp/pages/subjects/sat.js
 
 import { useState, useEffect } from 'react';
-import DifficultySelector from '../components/DifficultySelector';
-import satQuestions from '../data/satQuestions';
+import DifficultySelector from '../../components/DifficultySelector';
+import satQuestions from '../../data/satQuestions';
 
 const mapDifficulty = (difficulty, questionDifficulty) => {
   if (difficulty === 'mixed') return true;
@@ -73,8 +73,12 @@ const SATPracticePage = () => {
   };
 
   const renderQuestionText = (text) => {
-    return text.split('\n').map((line, idx) => (
-      <p key={idx} style={{ marginBottom: idx === text.length - 1 ? 0 : '0.35rem' }}>
+    const lines = text.split('\n');
+    return lines.map((line, idx) => (
+      <p
+        key={idx}
+        style={{ marginBottom: idx === lines.length - 1 ? 0 : '0.35rem' }}
+      >
         {line}
       </p>
     ));
