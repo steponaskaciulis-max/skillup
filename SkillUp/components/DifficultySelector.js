@@ -116,3 +116,4 @@ export default function DifficultySelector({ selectedDifficulty, onChange }) {
     </div>
   );
 }
+export default DifficultySelector;
