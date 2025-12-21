@@ -57,7 +57,8 @@ export default function DifficultySelector({ selectedDifficulty, onChange }) {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    transition: "background 0.18s ease-out, box-shadow 0.18s ease-out, transform 0.12s ease-out",
+    transition:
+      "background 0.18s ease-out, box-shadow 0.18s ease-out, transform 0.12s ease-out",
   };
 
   const labelPillBase = {
